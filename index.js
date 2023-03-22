@@ -22,7 +22,6 @@ con.connect(function (err) {
   if (err) throw err;
 });
 
-// const sql = path.join(__dirname, "generated-script.sql");
 const SELECT_PLACE_TYPE = fs
   .readFileSync("./tables/SELECT_PLACE_TYPE.sql")
   .toString();

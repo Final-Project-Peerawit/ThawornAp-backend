@@ -9,13 +9,4 @@ const con = mysql.createConnection({
   database: "test",
 });
 
-// const sql = fs.readFileSync("./generated-script.sql").toString();
-
-// con.query(sql, (error, results) => {
-//   if (error) {
-//     console.error(error);
-//     return;
-//   }
-// });
-
 module.exports = con;
