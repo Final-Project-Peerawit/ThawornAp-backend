@@ -65,6 +65,18 @@ const INSERT_ITEM_REPAIR = fs
   .readFileSync("./tables/INSERT_SELECT_ITEM_REPAIR.sql")
   .toString();
 
+const INSERT_THAWORN_ROLE = fs
+  .readFileSync("./tables/INSERT_THAWORN_ROLE.sql")
+  .toString();
+
+const INSERT_FUNCTION_LIST = fs
+  .readFileSync("./tables/INSERT_FUNCTION_LIST.sql")
+  .toString();
+
+const INSERT_ROLE_LIST = fs
+  .readFileSync("./tables/INSERT_ROLE_LIST.sql")
+  .toString();
+
 con.query(SELECT_PLACE_TYPE, (err) => {
   if (err) throw err;
   console.log("create table success1");
@@ -138,6 +150,21 @@ con.query(INSERT_PLACE, (err) => {
 con.query(INSERT_ITEM_REPAIR, (err) => {
   if (err) throw err;
   console.log("insert select_item_repair");
+});
+
+con.query(INSERT_THAWORN_ROLE, (err) => {
+  if (err) throw err;
+  console.log("insert thaworn_role");
+});
+
+con.query(INSERT_FUNCTION_LIST, (err) => {
+  if (err) throw err;
+  console.log("insert function_list");
+});
+
+con.query(INSERT_ROLE_LIST, (err) => {
+  if (err) throw err;
+  console.log("insert role_list");
 });
 
 //ให้สามารถอ่านข้อมูลประเภท json ได้
