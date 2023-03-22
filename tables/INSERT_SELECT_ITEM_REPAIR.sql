@@ -1,0 +1,21 @@
+INSERT INTO SELECT_ITEM_REPAIR (repair_id, place_id, repair_name, active) 
+VALUES (1, 1, 'เตียง', true), 
+       (2, 1, 'ตู้เสื้อผ้า', true), 
+       (3, 1, 'โต๊ะ', true),
+       (4, 1, 'เก้าอี้', true),
+       (5, 1, 'หลอดไฟ', true),
+       (6, 1, 'แอร์', true),
+       (7, 1, 'กระจก', true),
+       (8, 1, 'หน้าต่าง', true),
+       (9, 1, 'โคมไฟ', true),
+       (10, 1, 'ประตู', true),
+       (11, 2, 'ฝักบัว', true),
+       (12, 2, 'สายชำระ', true),
+       (13, 2, 'เครื่องทำน้ำอุ่น', true),
+       (14, 2, 'อ่างล้างมือ', true),
+       (15, 2, 'ท่อน้ำ', true),
+       (16, 2, 'โถสุขภัณฑ์', true),
+       (17, 3, 'ราวตากผ้า', true),
+       (18, 3, 'ก๊อกน้ำ', true),
+       (19, 3, 'ท่อน้ำทิ้ง', true)
+ON DUPLICATE KEY UPDATE place_id = VALUES(place_id), repair_name = VALUES(repair_name), active = VALUES(active);

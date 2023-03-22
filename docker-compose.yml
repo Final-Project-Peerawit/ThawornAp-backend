@@ -1,12 +1,12 @@
 #ไฟลล์ docker-compose  ไฟลล์นี้จะเป็นการสร้างฐานข้อมูล โดยใช้เป็น mysql version 5.7
-version: '3'
+version: "3"
 services:
   db:
-    image: mysql:5.7
+    image: mysql/mysql-server:5.6
     ports:
       - 3308:3306
     environment:
       MYSQL_ROOT_PASSWORD: test
       MYSQL_DATABASE: test
       MYSQL_USER: test
-      MYSQL_PASSWORD: test    
+      MYSQL_PASSWORD: test

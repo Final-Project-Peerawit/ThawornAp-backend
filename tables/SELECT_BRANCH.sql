@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS SELECT_BRANCH (
+    branch_id int NOT NULL,
+    branch_name VARCHAR(255) NOT NULL,
+    active boolean DEFAULT false,
+    create_dt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (branch_id)) DEFAULT CHARSET= utf8;

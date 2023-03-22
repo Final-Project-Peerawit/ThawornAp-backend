@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS REPORT_STATE (
+    state_id int NOT NULL,
+    state_name VARCHAR(255) NOT NULL,
+    active boolean DEFAULT false,
+    create_dt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+    ,PRIMARY KEY (state_id)) DEFAULT CHARSET= utf8;

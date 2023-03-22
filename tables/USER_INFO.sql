@@ -1,0 +1,16 @@
+CREATE TABLE IF NOT EXISTS USER_INFO (
+    login_id varchar(36) NOT NULL,
+    role_id int NOT NULL,
+    branch_id int NOT NULL,
+    firstname VARCHAR(255) NOT NULL,
+    lastname VARCHAR(255) NOT NULL,
+    room_number int NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    phone_number VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    active boolean DEFAULT false,
+    create_dt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (login_id),
+    FOREIGN KEY (role_id) REFERENCES THAWORN_ROLE(role_id),
+    FOREIGN KEY (branch_id) REFERENCES SELECT_BRANCH(branch_id),
+    UNIQUE (email)) DEFAULT CHARSET= utf8;
