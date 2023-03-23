@@ -3,6 +3,7 @@ const cors = require("cors"); // ไลบรารี่สำหรับก�
 const handlerRegister = require("./controller/register");
 const handlerLogin = require("./controller/login");
 const handlerListUser = require("./controller/list-user");
+const handlerSelectBranch = require("./controller/select_branch");
 const fs = require("fs");
 
 const path = require("path");
@@ -173,6 +174,8 @@ app.use(express.json());
 app.use(cors(corsOption));
 
 app.get("/api/list-user", handlerListUser); // get ใช้สำหรับดึงข้อมูลรายชื่อผู้ใช้งานระบบ
+
+app.get("/api/branch/:type_id", handlerSelectBranch);
 
 app.post("/api/register", handlerRegister); // POST ใช้สำหรับสร้างข้อมูลผู้ใช้งานระบบ
 
