@@ -175,7 +175,7 @@ app.use(cors(corsOption));
 
 app.get("/api/list-user", handlerListUser); // get ใช้สำหรับดึงข้อมูลรายชื่อผู้ใช้งานระบบ
 
-app.get("/api/branch/:type_id", handlerSelectBranch);
+app.get("/api/branch", handlerSelectBranch);
 
 app.post("/api/register", handlerRegister); // POST ใช้สำหรับสร้างข้อมูลผู้ใช้งานระบบ
 

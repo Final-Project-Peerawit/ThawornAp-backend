@@ -1,7 +1,6 @@
 const con = require("../../connection");
 
 const handlerSelectBranch = (req, res) => {
-  console.log(req.params.type_id);
   try {
     con.query(
       `SELECT * FROM SELECT_BRANCH WHERE active = 1;`,
