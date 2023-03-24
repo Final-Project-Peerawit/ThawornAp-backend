@@ -4,7 +4,7 @@ const handlerRegister = require("./controller/register");
 const handlerLogin = require("./controller/login");
 const handlerListUser = require("./controller/list-user");
 const handlerSelectBranch = require("./controller/select_branch");
-const handlerSelectPlaceType = require("./controller/select_place_type");
+const handlerThawornRole = require("./controller/thaworn_role");
 const fs = require("fs");
 
 const path = require("path");
@@ -178,7 +178,7 @@ app.get("/api/list-user", handlerListUser); // get ใช้สำหรับ�
 
 app.get("/api/branch", handlerSelectBranch);
 
-app.get("/api/place_type", handlerSelectPlaceType);
+app.get("/api/thaworn_role", handlerThawornRole);
 
 app.post("/api/register", handlerRegister); // POST ใช้สำหรับสร้างข้อมูลผู้ใช้งานระบบ
 
