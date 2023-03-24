@@ -4,6 +4,7 @@ const handlerRegister = require("./controller/register");
 const handlerLogin = require("./controller/login");
 const handlerListUser = require("./controller/list-user");
 const handlerSelectBranch = require("./controller/select_branch");
+const handlerThawornRole = require("./controller/thaworn_role");
 const fs = require("fs");
 
 const path = require("path");
@@ -176,6 +177,8 @@ app.use(cors(corsOption));
 app.get("/api/list-user", handlerListUser); // get ใช้สำหรับดึงข้อมูลรายชื่อผู้ใช้งานระบบ
 
 app.get("/api/branch", handlerSelectBranch);
+
+app.get("/api/thaworn_role", handlerThawornRole);
 
 app.post("/api/register", handlerRegister); // POST ใช้สำหรับสร้างข้อมูลผู้ใช้งานระบบ
 
