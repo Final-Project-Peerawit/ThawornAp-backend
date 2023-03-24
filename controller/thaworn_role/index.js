@@ -6,14 +6,14 @@ const handlerThawornRole = (req, res) => {
       `SELECT * FROM THAWORN_ROLE WHERE active = 1;`,
       (err, result, _fields) => {
         if (err) {
-          return res.status(400).send();
+          return res.status(400).send(err);
         }
 
         return res.status(200).json({ result: result });
       }
     );
   } catch (err) {
-    return res.status(500).send();
+    return res.status(500).send(err);
   }
 };
 
