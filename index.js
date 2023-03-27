@@ -187,7 +187,7 @@ app.get("/api/thaworn_role", handlerThawornRole);
 
 app.get("/api/function_list", handlerFunctionList);
 
-app.get("/api/place/:id", handlerSelectPlace);
+app.get("/api/place/:type_id", handlerSelectPlace);
 
 app.post("/api/register", handlerRegister); // POST ใช้สำหรับสร้างข้อมูลผู้ใช้งานระบบ
 
