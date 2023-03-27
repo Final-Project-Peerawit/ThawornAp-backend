@@ -7,6 +7,7 @@ const handlerSelectBranch = require("./controller/select_branch");
 const handlerThawornRole = require("./controller/thaworn_role");
 const handlerSelectPlaceType = require("./controller/select_place_type");
 const handlerFunctionList = require("./controller/function_list");
+const handlerSelectPlace = require("./controller/select_place");
 const handlerGetMenuByRoleId = require("./controller/menu_list");
 const fs = require("fs");
 
@@ -187,6 +188,7 @@ app.get("/api/thaworn_role", handlerThawornRole);
 
 app.get("/api/function_list", handlerFunctionList);
 
+app.get("/api/place/:type_id", handlerSelectPlace);
 app.get("/api/menu/:role_id", handlerGetMenuByRoleId);
 
 app.post("/api/register", handlerRegister); // POST ใช้สำหรับสร้างข้อมูลผู้ใช้งานระบบ
