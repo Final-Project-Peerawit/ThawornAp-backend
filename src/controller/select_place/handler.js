@@ -1,9 +1,9 @@
-const con = require("../../connection");
+const connection = require("../../connection");
 
-const handlerSelectPlace = (req, res) => {
+const handlerGetSelectPlace = (req, res) => {
   const { type_id } = req.params;
   try {
-    con.query(
+    connection.query(
       `SELECT * FROM SELECT_PLACE WHERE active = 1 AND type_id = ${type_id};`,
       (err, result, _fields) => {
         if (err) {
@@ -18,4 +18,4 @@ const handlerSelectPlace = (req, res) => {
   }
 };
 
-module.exports = handlerSelectPlace;
+module.exports = handlerGetSelectPlace;

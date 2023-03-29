@@ -1,7 +1,7 @@
 const mysql = require("mysql2");
 
 // สร้างการเชื่อมต่อฐานข้อมูล
-const con = mysql.createConnection({
+const conection = mysql.createConnection({
   host: "localhost",
   port: 3308,
   user: "test",
@@ -9,4 +9,4 @@ const con = mysql.createConnection({
   database: "test",
 });
 
-module.exports = con;
+module.exports = conection;
