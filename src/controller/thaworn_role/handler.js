@@ -1,8 +1,8 @@
-const con = require("../../connection");
+const connection = require("../../connection");
 
-const handlerThawornRole = (req, res) => {
+const handlerGetThawornRole = (_req, res) => {
   try {
-    con.query(
+    connection.query(
       `SELECT * FROM THAWORN_ROLE WHERE active = 1;`,
       (err, result, _fields) => {
         if (err) {
@@ -17,4 +17,4 @@ const handlerThawornRole = (req, res) => {
   }
 };
 
-module.exports = handlerThawornRole;
+module.exports = handlerGetThawornRole;

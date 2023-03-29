@@ -1,8 +1,8 @@
-const con = require("../../connection");
+const connection = require("../../connection");
 
-const handlerSelectPlaceType = (req, res) => {
+const handlerGetSelectPlaceType = (req, res) => {
   try {
-    con.query(
+    connection.query(
       `SELECT * FROM SELECT_PLACE_TYPE WHERE active = 1;`,
       (err, result, _fields) => {
         if (err) {
@@ -17,4 +17,4 @@ const handlerSelectPlaceType = (req, res) => {
   }
 };
 
-module.exports = handlerSelectPlaceType;
+module.exports = handlerGetSelectPlaceType;

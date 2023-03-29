@@ -1,8 +1,8 @@
-const con = require("../../connection");
+const connection = require("../../connection");
 
-const handlerSelectBranch = (req, res) => {
+const handlerGetSelectBranch = (req, res) => {
   try {
-    con.query(
+    connection.query(
       `SELECT * FROM SELECT_BRANCH WHERE active = 1;`,
       (err, result, _fields) => {
         if (err) {
@@ -17,4 +17,4 @@ const handlerSelectBranch = (req, res) => {
   }
 };
 
-module.exports = handlerSelectBranch;
+module.exports = handlerGetSelectBranch;
