@@ -13,6 +13,7 @@ const fs = require("fs");
 
 const path = require("path");
 
+const jwt = require("jsonwebtoken");
 const con = require("./connection"); // เรียก con จากไฟล์ connection.js
 const app = express(); // เรียกใช้งานฟังก์ชั้นสำหรับการสร้าง api
 const port = 5174; // ประกาศ port
@@ -191,9 +192,9 @@ app.get("/api/function_list", handlerFunctionList);
 app.get("/api/place/:type_id", handlerSelectPlace);
 app.get("/api/menu/:role_id", handlerGetMenuByRoleId);
 
-app.post("/api/register", handlerRegister); // POST ใช้สำหรับสร้างข้อมูลผู้ใช้งานระบบ
+// app.post("/api/login", handlerLogin); // POST ใช้สำหรับตรวจสอบผู้ใช้งานระบบ
 
-app.post("/api/login", handlerLogin); // POST ใช้สำหรับตรวจสอบผู้ใช้งานระบบ
+app.post("/api/register", handlerRegister);
 
 // รันด้วย port 5174
 app.listen(port, () => {
