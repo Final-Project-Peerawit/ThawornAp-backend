@@ -10,7 +10,9 @@ const handleGetThawornRole = require("./src/controller/thaworn_role");
 const handleGetSelectPlaceType = require("./src/controller/select_place_type");
 const handleGetSelectPlace = require("./src/controller/select_place");
 const handleGetMenuByRoleId = require("./src/controller/menu_list");
-const handlerRegister = require("./src/controller/register");
+const handleRegister = require("./src/controller/register");
+const handleLogin = require("./src/controller/login");
+const handlerAuthen = require("./src/controller/authen");
 
 sqlQuery();
 
@@ -24,9 +26,11 @@ app.get("/api/place_type", handleGetSelectPlaceType);
 
 app.get("/api/thaworn_role", handleGetThawornRole);
 
-// app.post("/api/login", handlerLogin); // POST ใช้สำหรับตรวจสอบผู้ใช้งานระบบ
+app.post("/api/login", handleLogin);
 
-app.post("/api/register", handlerRegister);
+app.post("/api/register", handleRegister);
+
+app.post("/api/authen", handlerAuthen);
 
 app.get("/api/place/:type_id", handleGetSelectPlace);
 
