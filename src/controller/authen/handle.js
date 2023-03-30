@@ -1,4 +1,3 @@
-const con = require("../../connection");
 const jwt = require("jsonwebtoken");
 
 const secret = "test-token-login";
