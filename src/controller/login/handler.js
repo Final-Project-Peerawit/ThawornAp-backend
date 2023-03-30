@@ -1,8 +1,9 @@
 const conection = require("../../connection");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
+require("dotenv/config");
 
-const secret = "test-token-login";
+const secret = process.env.SECRET_KEY;
 const handlerLogin = (req, res) => {
   const { email, password } = req.body;
   try {
@@ -18,9 +19,17 @@ const handlerLogin = (req, res) => {
 
         bcrypt.compare(password, result[0].password, (err, isLogin) => {
           if (isLogin) {
-            const tokens = jwt.sign({ email: result[0].email }, secret, {
-              expiresIn: "1h",
-            });
+            const tokens = jwt.sign(
+              {
+                email: result[0].email,
+                role_id: result[0].role_id,
+                login_id: result[0].login_id,
+              },
+              secret,
+              {
+                expiresIn: "1h",
+              }
+            );
             return res.status(201).json({ message: "Login success", tokens });
           } else {
             return res.status(400).json({ message: "Login failed" });

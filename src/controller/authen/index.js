@@ -1,4 +1,4 @@
-const handlerAuthen = require("./handle");
+const handlerAuthen = require("./handler");
 
 const handleAuthen = [handlerAuthen];
 

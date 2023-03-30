@@ -1,4 +1,4 @@
-const handlerLogin = require("./handle");
+const handlerLogin = require("./handler");
 
 const handleLogin = [handlerLogin];
 
