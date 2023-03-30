@@ -1,4 +1,4 @@
-const con = require("../../connection");
+const conection = require("../../connection");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
@@ -6,7 +6,7 @@ const secret = "test-token-login";
 const handlerLogin = (req, res) => {
   const { email, password } = req.body;
   try {
-    con.query(
+    conection.query(
       `SELECT * FROM USER_INFO WHERE email='${email}';`,
       (err, result, _fields) => {
         if (err) {

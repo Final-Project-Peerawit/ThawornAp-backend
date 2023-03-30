@@ -1,4 +1,4 @@
-const con = require("../../connection");
+const conection = require("../../connection");
 const bcrypt = require("bcryptjs");
 const { v4: uuidv4 } = require("uuid");
 
@@ -17,7 +17,7 @@ const handlerRegister = (req, res) => {
     const login_id = uuidv4();
 
     bcrypt.hash(password, 10, (err, hash) => {
-      con.query(
+      conection.query(
         `INSERT INTO USER_INFO (login_id , role_id, branch_id, firstname, lastname ,email ,phone_number, password) VALUES ('${login_id}','${role_id}','${branch_id}','${firstname}','${lastname}','${email}','${phone_number}','${hash}')`,
         (err, _result, _fields) => {
           if (err) {
