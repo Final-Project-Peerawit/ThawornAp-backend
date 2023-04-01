@@ -5,20 +5,46 @@ const { v4: uuidv4 } = require("uuid");
 const handlerRegister = (req, res) => {
   try {
     const {
-      role_id,
       branch_id,
       firstname,
       lastname,
       email,
       phone_number,
       password,
+      room_number,
     } = req.body;
 
     const login_id = uuidv4();
-
+    const role_id = 1;
+    const active = 1;
     bcrypt.hash(password, 10, (err, hash) => {
       conection.query(
-        `INSERT INTO USER_INFO (login_id , role_id, branch_id, firstname, lastname ,email ,phone_number, password) VALUES ('${login_id}','${role_id}','${branch_id}','${firstname}','${lastname}','${email}','${phone_number}','${hash}')`,
+        `INSERT INTO
+        USER_INFO (
+            login_id,
+            role_id,
+            branch_id,
+            firstname,
+            lastname,
+            email,
+            phone_number,
+            password,
+            room_number,
+            active
+        )
+        VALUES
+        (
+            '${login_id}',
+            '${role_id}',
+            '${branch_id}',
+            '${firstname}',
+            '${lastname}',
+            '${email}',
+            '${phone_number}',
+            '${hash}',
+            '${room_number}',
+            '${active}'
+        );`,
         (err, _result, _fields) => {
           if (err) {
             return res.status(400).send(err);

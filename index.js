@@ -20,21 +20,19 @@ app.use(express.json());
 
 app.use(cors({ origin: "*", credentials: true }));
 
-app.get("/api/branch", handleGetSelectBranch);
+app.post("/api/register", handleRegister);
 
-app.get("/api/place_type", handleGetSelectPlaceType);
+app.get("/api/branch", handlerAuthen, handleGetSelectBranch);
 
-app.get("/api/thaworn_role", handleGetThawornRole);
+app.get("/api/place_type", handlerAuthen, handleGetSelectPlaceType);
+
+app.get("/api/thaworn_role", handlerAuthen, handleGetThawornRole);
 
 app.post("/api/login", handleLogin);
 
-app.post("/api/register", handleRegister);
+app.get("/api/place/:type_id", handlerAuthen, handleGetSelectPlace);
 
-app.post("/api/authen", handlerAuthen);
-
-app.get("/api/place/:type_id", handleGetSelectPlace);
-
-app.get("/api/menu/:role_id", handleGetMenuByRoleId);
+app.get("/api/menu", handlerAuthen, handleGetMenuByRoleId);
 
 app.listen(port, () => {
   console.log("listening in port ", port);
