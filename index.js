@@ -11,6 +11,7 @@ const handleGetSelectPlaceType = require("./src/controller/select_place_type");
 const handleGetSelectPlace = require("./src/controller/select_place");
 const handleGetMenuByRoleId = require("./src/controller/menu_list");
 const handleRegister = require("./src/controller/register");
+const handleRegisterAdmin = require("./src/controller/register_admin");
 const handleLogin = require("./src/controller/login");
 const handlerAuthen = require("./src/controller/authen");
 
@@ -21,6 +22,8 @@ app.use(express.json());
 app.use(cors({ origin: "*", credentials: true }));
 
 app.post("/api/register", handleRegister);
+
+app.post("/api/registerAdmin", handleRegisterAdmin);
 
 app.get("/api/branch", handlerAuthen, handleGetSelectBranch);
 

@@ -46,10 +46,10 @@ const handlerRegister = (req, res) => {
             '${active}'
         );`,
         (err, _result, _fields) => {
+          conection.destroy();
           if (err) {
             return res.status(400).send(err);
           }
-
           return res.status(201).json({ message: "ok" });
         }
       );
