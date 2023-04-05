@@ -1,6 +1,7 @@
 const conection = require("../../connection");
 const bcrypt = require("bcryptjs");
 const { v4: uuidv4 } = require("uuid");
+const TYPE_ROLE = require("../../enums/type_roleid");
 
 const handlerRegister = (req, res) => {
   try {
@@ -15,7 +16,7 @@ const handlerRegister = (req, res) => {
     } = req.body;
 
     const login_id = uuidv4();
-    const role_id = 1;
+    const role_id = TYPE_ROLE.USER;
     const active = 1;
     bcrypt.hash(password, 10, (err, hash) => {
       conection.query(
