@@ -3,20 +3,13 @@ const bcrypt = require("bcryptjs");
 const { v4: uuidv4 } = require("uuid");
 const TYPE_ROLE = require("../../enums/type_roleid");
 
-const handlerRegister = (req, res) => {
+const handlerRegisterAdmin = (req, res) => {
   try {
-    const {
-      branch_id,
-      firstname,
-      lastname,
-      email,
-      phone_number,
-      password,
-      room_number,
-    } = req.body;
+    const { branch_id, firstname, lastname, email, phone_number, password } =
+      req.body;
 
     const login_id = uuidv4();
-    const role_id = TYPE_ROLE.USER;
+    const role_id = TYPE_ROLE.ADMIN;
     const active = 1;
     bcrypt.hash(password, 10, (err, hash) => {
       conection.query(
@@ -30,7 +23,6 @@ const handlerRegister = (req, res) => {
             email,
             phone_number,
             password,
-            room_number,
             active
         )
         VALUES
@@ -43,7 +35,6 @@ const handlerRegister = (req, res) => {
             '${email}',
             '${phone_number}',
             '${hash}',
-            '${room_number}',
             '${active}'
         );`,
         (err, _result, _fields) => {
@@ -60,4 +51,4 @@ const handlerRegister = (req, res) => {
   }
 };
 
-module.exports = handlerRegister;
+module.exports = handlerRegisterAdmin;

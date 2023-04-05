@@ -10,7 +10,10 @@ const handleGetThawornRole = require("./src/controller/thaworn_role");
 const handleGetSelectPlaceType = require("./src/controller/select_place_type");
 const handleGetSelectPlace = require("./src/controller/select_place");
 const handleGetMenuByRoleId = require("./src/controller/menu_list");
-const handlerRegister = require("./src/controller/register");
+const handleRegister = require("./src/controller/register");
+const handleRegisterAdmin = require("./src/controller/register_admin");
+const handleLogin = require("./src/controller/login");
+const handlerAuthen = require("./src/controller/authen");
 
 sqlQuery();
 
@@ -18,19 +21,21 @@ app.use(express.json());
 
 app.use(cors({ origin: "*", credentials: true }));
 
-app.get("/api/branch", handleGetSelectBranch);
+app.post("/api/register", handleRegister);
 
-app.get("/api/place_type", handleGetSelectPlaceType);
+app.post("/api/registerAdmin", handleRegisterAdmin);
 
-app.get("/api/thaworn_role", handleGetThawornRole);
+app.get("/api/branch", handlerAuthen, handleGetSelectBranch);
 
-// app.post("/api/login", handlerLogin); // POST ใช้สำหรับตรวจสอบผู้ใช้งานระบบ
+app.get("/api/place_type", handlerAuthen, handleGetSelectPlaceType);
 
-app.post("/api/register", handlerRegister);
+app.get("/api/thaworn_role", handlerAuthen, handleGetThawornRole);
 
-app.get("/api/place/:type_id", handleGetSelectPlace);
+app.post("/api/login", handleLogin);
 
-app.get("/api/menu/:role_id", handleGetMenuByRoleId);
+app.get("/api/place/:type_id", handlerAuthen, handleGetSelectPlace);
+
+app.get("/api/menu", handlerAuthen, handleGetMenuByRoleId);
 
 app.listen(port, () => {
   console.log("listening in port ", port);

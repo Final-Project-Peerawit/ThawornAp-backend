@@ -12,6 +12,7 @@ CREATE TABLE IF NOT EXISTS REPORT (
     is_success boolean DEFAULT false,
     is_allow boolean DEFAULT false,
     item_price int NOT NULL,
+    active boolean DEFAULT false,
     PRIMARY KEY (report_id),
     FOREIGN KEY (login_id) REFERENCES USER_INFO(login_id),
     FOREIGN KEY (type_id) REFERENCES SELECT_PLACE_TYPE(type_id),
