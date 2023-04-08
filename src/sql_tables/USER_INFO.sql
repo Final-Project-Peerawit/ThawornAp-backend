@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS USER_INFO (
     branch_id int NOT NULL,
     firstname VARCHAR(255) NOT NULL,
     lastname VARCHAR(255) NOT NULL,
-    room_number int NOT NULL,
+    room_number int NULL,
     email VARCHAR(255) NOT NULL,
     phone_number VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,

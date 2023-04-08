@@ -24,6 +24,7 @@ const handlerLogin = (req, res) => {
                 email: result[0].email,
                 role_id: result[0].role_id,
                 login_id: result[0].login_id,
+                branch_id: result[0].branch_id,
               },
               secret,
               {
