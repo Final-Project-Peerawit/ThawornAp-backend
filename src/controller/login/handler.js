@@ -25,13 +25,14 @@ const handlerLogin = (req, res) => {
                 role_id: result[0].role_id,
                 login_id: result[0].login_id,
                 branch_id: result[0].branch_id,
+                room_number : result[0].room_number
               },
               secret,
               {
                 expiresIn: "1h",
               }
             );
-            return res.status(201).json({ message: "Login success", tokens });
+            return res.status(201).json({ message: "Login success", tokens, branch_id: result[0].branch_id, role_id: result[0].role_id, room_number : result[0].room_number });
           } else {
             return res.status(400).json({ message: "Login failed" });
           }
