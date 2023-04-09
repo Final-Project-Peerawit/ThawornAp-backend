@@ -3,7 +3,7 @@ const connection = require("../../connection");
 const handlerGetSelectBranch = (req, res) => {
   try {
     connection.query(
-      `SELECT * FROM SELECT_BRANCH WHERE active = 1;`,
+      `SELECT * FROM SELECT_BRANCH WHERE active = 1 AND branch_id != 0;`,
       (err, result, _fields) => {
         if (err) {
           return res.status(400).send(err);

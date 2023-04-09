@@ -27,7 +27,7 @@ app.post("/api/register", handleRegister);
 
 app.post("/api/registerAdmin", handleRegisterAdmin);
 
-app.get("/api/branch", handlerAuthen, handleGetSelectBranch);
+app.get("/api/branch", handleGetSelectBranch);
 
 app.get("/api/place_type", handlerAuthen, handleGetSelectPlaceType);
 
