@@ -1,9 +1,9 @@
 const connection = require("../../connection");
 
-const handlerGetSelectBranch = (req, res) => {
+const handlerGetExpensesAllBranch = (req, res) => {
   try {
     connection.query(
-      `SELECT * FROM SELECT_BRANCH WHERE active = 1 AND branch_id != 0;`,
+      `SELECT branch_id, SUM(item_price) as total_item_price, SUM(wage) as total_wage , SUM(item_price) + SUM(wage) as total_all FROM EXPENSES;`,
       (err, result, _fields) => {
         if (err) {
           return res.status(400).send(err);
@@ -17,4 +17,4 @@ const handlerGetSelectBranch = (req, res) => {
   }
 };
 
-module.exports = handlerGetSelectBranch;
+module.exports = handlerGetExpensesAllBranch;

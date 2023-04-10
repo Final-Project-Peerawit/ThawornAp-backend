@@ -16,6 +16,7 @@ const handleLogin = require("./src/controller/login");
 const handlerAuthen = require("./src/controller/authen");
 const handlerGetExpensesBranch = require("./src/controller/expeses_branch");
 const handlerGetUsesProfile = require("./src/controller/user_profile");
+const handlerGetExpensesAllBranch = require("./src/controller/expeses_all_branch");
 
 sqlQuery();
 
@@ -27,7 +28,7 @@ app.post("/api/register", handleRegister);
 
 app.post("/api/registerAdmin", handleRegisterAdmin);
 
-app.get("/api/branch", handlerAuthen, handleGetSelectBranch);
+app.get("/api/branch", handleGetSelectBranch);
 
 app.get("/api/place_type", handlerAuthen, handleGetSelectPlaceType);
 
@@ -42,6 +43,8 @@ app.get("/api/menu", handlerAuthen, handleGetMenuByRoleId);
 app.get("/api/expensesBranch", handlerAuthen, handlerGetExpensesBranch);
 
 app.get("/api/usersProfile", handlerAuthen, handlerGetUsesProfile);
+
+app.get("/api/expensesAllBranch", handlerAuthen, handlerGetExpensesAllBranch);
 
 app.listen(port, () => {
   console.log("listening in port ", port);
