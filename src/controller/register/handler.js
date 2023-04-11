@@ -1,4 +1,4 @@
-const conection = require("../../connection");
+const connection = require("../../connection");
 const bcrypt = require("bcryptjs");
 const { v4: uuidv4 } = require("uuid");
 const TYPE_ROLE = require("../../enums/type_roleid");
@@ -19,7 +19,7 @@ const handlerRegister = (req, res) => {
     const role_id = TYPE_ROLE.USER;
     const active = 1;
     bcrypt.hash(password, 10, (err, hash) => {
-      conection.query(
+      connection.query(
         `INSERT INTO
         USER_INFO (
             login_id,
@@ -35,19 +35,19 @@ const handlerRegister = (req, res) => {
         )
         VALUES
         (
-            '${login_id}',
-            '${role_id}',
-            '${branch_id}',
-            '${firstname}',
-            '${lastname}',
-            '${email}',
-            '${phone_number}',
-            '${hash}',
-            '${room_number}',
-            '${active}'
+            ${connection.escape(login_id)},
+            ${connection.escape(role_id)},
+            ${connection.escape(branch_id)},
+            ${connection.escape(firstname)},
+            ${connection.escape(lastname)},
+            ${connection.escape(email)},
+            ${connection.escape(phone_number)},
+            ${connection.escape(hash)},
+            ${connection.escape(room_number)},
+            ${connection.escape(active)}
         );`,
         (err, _result, _fields) => {
-          conection.destroy();
+          connection.destroy();
           if (err) {
             return res.status(400).send(err);
           }

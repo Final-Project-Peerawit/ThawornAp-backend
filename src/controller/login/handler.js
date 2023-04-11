@@ -1,4 +1,4 @@
-const conection = require("../../connection");
+const connection = require("../../connection");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 require("dotenv/config");
@@ -7,8 +7,8 @@ const secret = process.env.SECRET_KEY;
 const handlerLogin = (req, res) => {
   const { email, password } = req.body;
   try {
-    conection.query(
-      `SELECT * FROM USER_INFO WHERE email='${email}';`,
+    connection.query(
+      `SELECT * FROM USER_INFO WHERE email=${connection.escape(email)};`,
       (err, result, _fields) => {
         if (err) {
           return res.status(400).send(err);
@@ -25,14 +25,22 @@ const handlerLogin = (req, res) => {
                 role_id: result[0].role_id,
                 login_id: result[0].login_id,
                 branch_id: result[0].branch_id,
-                room_number : result[0].room_number
+                room_number: result[0].room_number,
               },
               secret,
               {
                 expiresIn: "1h",
               }
             );
-            return res.status(201).json({ message: "Login success", tokens, branch_id: result[0].branch_id, role_id: result[0].role_id, room_number : result[0].room_number });
+            return res
+              .status(201)
+              .json({
+                message: "Login success",
+                tokens,
+                branch_id: result[0].branch_id,
+                role_id: result[0].role_id,
+                room_number: result[0].room_number,
+              });
           } else {
             return res.status(400).json({ message: "Login failed" });
           }

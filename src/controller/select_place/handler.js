@@ -4,7 +4,9 @@ const handlerGetSelectPlace = (req, res) => {
   const { type_id } = req.params;
   try {
     connection.query(
-      `SELECT * FROM SELECT_PLACE WHERE active = 1 AND type_id = ${type_id};`,
+      `SELECT * FROM SELECT_PLACE WHERE active = 1 AND type_id = ${connection.escape(
+        type_id
+      )};`,
       (err, result, _fields) => {
         if (err) {
           return res.status(400).send(err);

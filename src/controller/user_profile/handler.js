@@ -4,7 +4,9 @@ const handlerGetUsesProfile = (req, res) => {
   const { email } = req.user;
   try {
     connection.query(
-      `SELECT firstname,lastname,email,phone_number,room_number,branch_id FROM USER_INFO WHERE email = '${email}';`,
+      `SELECT firstname,lastname,email,phone_number,room_number,branch_id FROM USER_INFO WHERE email = ${connection.escape(
+        email
+      )};`,
       (err, result, _fields) => {
         if (err) {
           return res.status(400).send(err);
