@@ -1,4 +1,4 @@
-const connection = require("../../connection");
+const connection = require("../../../connection");
 
 const handlerGetUsesProfile = (req, res) => {
   const { login_id } = req.user;
