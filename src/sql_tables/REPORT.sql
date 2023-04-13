@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS REPORT (
     create_dt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     is_success boolean DEFAULT false,
     is_allow boolean DEFAULT false,
-    item_price int NOT NULL,
+    item_price int NULL,
     active boolean DEFAULT false,
     PRIMARY KEY (report_id),
     FOREIGN KEY (login_id) REFERENCES USER_INFO(login_id),
