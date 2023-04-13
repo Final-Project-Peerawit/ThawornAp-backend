@@ -42,7 +42,7 @@ app.get("/api/menu", handlerAuthen, handleGetMenuByRoleId);
 
 app.get("/api/expensesBranch", handlerAuthen, handlerGetExpensesBranch);
 
-app.get("/api/usersProfile", handlerAuthen, handlerGetUsesProfile);
+app.get("/api/user/profile", handlerAuthen, handlerGetUsesProfile);
 
 app.get("/api/expensesAllBranch", handlerAuthen, handlerGetExpensesAllBranch);
 

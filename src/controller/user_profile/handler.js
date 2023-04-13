@@ -1,11 +1,11 @@
 const connection = require("../../connection");
 
 const handlerGetUsesProfile = (req, res) => {
-  const { email } = req.user;
+  const { login_id } = req.user;
   try {
     connection.query(
-      `SELECT firstname,lastname,email,phone_number,room_number,branch_id FROM USER_INFO WHERE email = ${connection.escape(
-        email
+      `SELECT firstname,lastname,email,phone_number,room_number,branch_id FROM USER_INFO WHERE login_id = ${connection.escape(
+        login_id
       )};`,
       (err, result, _fields) => {
         if (err) {

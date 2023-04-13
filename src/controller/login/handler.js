@@ -38,6 +38,7 @@ const handlerLogin = (req, res) => {
                 message: "Login success",
                 tokens,
                 branch_id: result[0].branch_id,
+                login_id: result[0].login_id,
                 role_id: result[0].role_id,
                 room_number: result[0].room_number,
               });
