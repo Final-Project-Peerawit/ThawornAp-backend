@@ -6,5 +6,6 @@ VALUES
     (3, 'ยืนยันวัน-เวลา', true),
     (4, 'กำลังดำเนินการ', true),
     (5, 'ตรวจสอบหลังดำเนินการ', true),
-    (6, 'เสร็จสิ้น', true) 
+    (6, 'เสร็จสิ้น', true),
+    (7, 'ไม่สำเร็จ', true)
 ON DUPLICATE KEY UPDATE state_name = VALUES(state_name), active = VALUES(active);
