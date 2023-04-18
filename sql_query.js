@@ -74,6 +74,10 @@ const sqlQuery = () => {
     .readFileSync("./src/sql_tables/INSERT_REPORT_STATE.sql")
     .toString();
 
+  const TIME_SLOT = fs
+    .readFileSync("./src/sql_tables/TIME_SLOT.sql")
+    .toString();
+
   connection.query(SELECT_PLACE_TYPE, (err) => {
     if (err) throw err;
     console.log("create table success1");
@@ -167,6 +171,11 @@ const sqlQuery = () => {
   connection.query(INSERT_REPORT_STATE, (err) => {
     if (err) throw err;
     console.log("insert report_state");
+  });
+
+  connection.query(TIME_SLOT, (err) => {
+    if (err) throw err;
+    console.log("create table time_slot");
   });
 };
 
