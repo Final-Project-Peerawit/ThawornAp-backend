@@ -47,7 +47,6 @@ const handlerRegister = (req, res) => {
             ${connection.escape(active)}
         );`,
         (err, _result, _fields) => {
-          connection.destroy();
           if (err) {
             return res.status(400).send(err);
           }

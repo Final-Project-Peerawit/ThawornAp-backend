@@ -41,6 +41,7 @@ const handlerGetListReport = (req, res) => {
       REPORT.state_id,
       REPORT_STATE.state_name,
       REPORT.image_file,
+      REPORT.description,
       REPORT.is_allow,
       REPORT.report_dt,
       REPORT.create_dt,
@@ -58,7 +59,8 @@ const handlerGetListReport = (req, res) => {
       ${queryBranchId}
       ${queryStateId}
       ${queryRoomNumber}
-      ${queryDate};`,
+      ${queryDate}
+      ORDER BY REPORT.create_dt DESC;`,
       (err, result, _fields) => {
         if (err) {
           return res.status(400).send(err);
