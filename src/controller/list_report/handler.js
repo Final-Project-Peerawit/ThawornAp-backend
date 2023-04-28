@@ -5,9 +5,10 @@ const handlerGetListReport = (req, res) => {
   const queryReportId = reportId
     ? `AND report_id = ${connection.escape(reportId)}`
     : "";
-  const queryBranchId = branchId
-    ? `AND USER_INFO.branch_id = ${connection.escape(branchId)}`
-    : "";
+  const queryBranchId =
+    branchId && branchId != 0
+      ? `AND USER_INFO.branch_id = ${connection.escape(branchId)}`
+      : "";
   const queryStateId = stateId
     ? `AND REPORT.state_id = ${connection.escape(stateId)}`
     : "";
@@ -20,6 +21,7 @@ const handlerGetListReport = (req, res) => {
           startDt
         )} AND ${connection.escape(endDt)}`
       : "";
+
   try {
     connection.query(
       `SELECT

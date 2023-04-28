@@ -1,5 +1,6 @@
 const fs = require("fs");
 const connection = require("./src/connection");
+const { isUtf8 } = require("buffer");
 
 const sqlQuery = () => {
   const SELECT_PLACE_TYPE = fs
