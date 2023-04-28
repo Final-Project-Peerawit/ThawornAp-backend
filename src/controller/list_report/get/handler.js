@@ -58,12 +58,13 @@ const handlerGetListReport = (req, res) => {
       INNER JOIN SELECT_PLACE_TYPE ON REPORT.type_id = SELECT_PLACE_TYPE.type_id
       INNER JOIN SELECT_ITEM_REPAIR ON REPORT.repair_id = SELECT_ITEM_REPAIR.repair_id
       INNER JOIN REPORT_STATE ON REPORT.state_id = REPORT_STATE.state_id
-      WHERE 1 = 1 AND active = 1
+      WHERE 1 = 1
       ${queryReportId}
       ${queryBranchId}
       ${queryStateId}
       ${queryRoomNumber}
       ${queryDate}
+      AND REPORT.active = 1
       ORDER BY REPORT.create_dt DESC;`,
       (err, result, _fields) => {
         if (err) {

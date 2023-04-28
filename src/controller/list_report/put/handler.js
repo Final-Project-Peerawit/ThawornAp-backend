@@ -5,7 +5,7 @@ const handlerUpdateListReport = (req, res) => {
   try {
     connection.query(
       `UPDATE REPORT SET active = 0
-      )}WHERE report_id = ${connection.escape(report_id)};`,
+      WHERE report_id = ${connection.escape(report_id)};`,
       (err, _result, _fields) => {
         if (err) {
           return res.status(400).send(err);
