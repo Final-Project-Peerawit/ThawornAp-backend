@@ -19,8 +19,9 @@ const handlerGetUsesProfile = require("./src/controller/user_profile/get");
 const handlerGetExpensesAllBranch = require("./src/controller/expeses_all_branch");
 const handlerReport = require("./src/controller/report");
 const handleUpdateProfile = require("./src/controller/user_profile/put");
-const handleGetListReport = require("./src/controller/list_report");
+const handleGetListReport = require("./src/controller/list_report/get");
 const handlerGetReportState = require("./src/controller/report_state");
+const handlerUpdateListReport = require("./src/controller/list_report/put");
 
 sqlQuery();
 
@@ -57,6 +58,8 @@ app.put("/api/user/profile", handlerAuthen, handleUpdateProfile);
 app.get("/api/list-report", handlerAuthen, handleGetListReport);
 
 app.get("/api/reportState", handlerAuthen, handlerGetReportState);
+
+app.put("/api/list-report", handlerAuthen, handlerUpdateListReport);
 
 app.listen(port, () => {
   console.log("listening in port ", port);

@@ -1,4 +1,4 @@
-const connection = require("../../connection");
+const connection = require("../../../connection");
 
 const handlerGetListReport = (req, res) => {
   const { reportId, branchId, stateId, roomNumber, startDt, endDt } = req.query;
@@ -37,6 +37,8 @@ const handlerGetListReport = (req, res) => {
       REPORT.type_id,
       SELECT_PLACE_TYPE.type_name,
       REPORT.place_id,
+      REPORT.is_time_not_match,
+      REPORT.description_notify,
       SELECT_PLACE.place_name,
       REPORT.repair_id,
       SELECT_ITEM_REPAIR.repair_name,
@@ -56,7 +58,7 @@ const handlerGetListReport = (req, res) => {
       INNER JOIN SELECT_PLACE_TYPE ON REPORT.type_id = SELECT_PLACE_TYPE.type_id
       INNER JOIN SELECT_ITEM_REPAIR ON REPORT.repair_id = SELECT_ITEM_REPAIR.repair_id
       INNER JOIN REPORT_STATE ON REPORT.state_id = REPORT_STATE.state_id
-      WHERE 1 = 1
+      WHERE 1 = 1 AND active = 1
       ${queryReportId}
       ${queryBranchId}
       ${queryStateId}
