@@ -48,7 +48,7 @@ app.post("/api/report", handlerAuthen, handlerReport);
 app.post("/api/register", handleRegister);
 app.post("/api/registerAdmin", handlerAuthen, handleRegisterAdmin);
 app.post(
-  "/api/list-report/:report_id/time_slot",
+  "/api/list-report/:report_id/time-slot",
   handlerAuthen,
   handlerTimeSlot
 );
@@ -56,12 +56,12 @@ app.post(
 app.put("/api/user/profile", handlerAuthen, handleUpdateProfile);
 app.put("/api/list-report", handlerAuthen, handlerUpdateListReport);
 app.put(
-  "/api/list-report/:time_id/time_slot",
+  "/api/list-report/:time_id/time-slot",
   handlerAuthen,
   handlerUpdateTimeSlot
 );
 app.put(
-  "/api/list-report/:report_id/change_state",
+  "/api/list-report/:report_id/change-state",
   handlerAuthen,
   handlerChangeState
 );
