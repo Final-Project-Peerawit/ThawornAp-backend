@@ -7,17 +7,16 @@ const handlerChangeState = (req, res) => {
     ? `state_id = ${connection.escape(state_id)}`
     : "";
 
-  const queryIsTimeNotMatch = is_time_not_match
-    ? `is_time_not_match = ${connection.escape(is_time_not_match)}`
-    : "";
-
-  const queryDescriptionNotify = description_notify
-    ? `description_notify = ${connection.escape(description_notify)}`
-    : "";
+  const queryIsTimeNotMatch =
+    is_time_not_match && description_notify
+      ? `is_time_not_match = ${connection.escape(
+          is_time_not_match
+        )}, description_notify = ${connection.escape(description_notify)}`
+      : "";
 
   try {
     connection.query(
-      `UPDATE REPORT SET ${queryState} ${queryIsTimeNotMatch} ${queryDescriptionNotify}
+      `UPDATE REPORT SET ${queryState} ${queryIsTimeNotMatch}
         WHERE report_id = ${connection.escape(report_id)};`,
       (err, _result, _fields) => {
         if (err) {
