@@ -39,6 +39,7 @@ const handlerGetListReport = (req, res) => {
       REPORT.place_id,
       REPORT.is_time_not_match,
       REPORT.description_notify,
+      REPORT.is_new_time,
       SELECT_PLACE.place_name,
       REPORT.repair_id,
       SELECT_ITEM_REPAIR.repair_name,
