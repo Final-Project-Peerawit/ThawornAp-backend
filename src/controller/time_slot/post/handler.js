@@ -8,10 +8,6 @@ const handlerTimeSlot = (req, res) => {
   const time_id = uuidv4();
   const active = 1;
 
-  console.log(time_slot1);
-  console.log(time_slot2);
-  console.log(time_slot3);
-  console.log(time_slot4);
   try {
     connection.query(
       `INSERT INTO 

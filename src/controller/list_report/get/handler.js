@@ -3,7 +3,7 @@ const connection = require("../../../connection");
 const handlerGetListReport = (req, res) => {
   const { reportId, branchId, stateId, roomNumber, startDt, endDt } = req.query;
   const queryReportId = reportId
-    ? `AND report_id = ${connection.escape(reportId)}`
+    ? `AND REPORT.report_id = ${connection.escape(reportId)}`
     : "";
   const queryBranchId =
     branchId && branchId != 0
@@ -35,6 +35,7 @@ const handlerGetListReport = (req, res) => {
       USER_INFO.email,
       USER_INFO.phone_number,
       REPORT.type_id,
+      TIME_SLOT.time_id,
       SELECT_PLACE_TYPE.type_name,
       REPORT.place_id,
       REPORT.is_time_not_match,
@@ -59,6 +60,7 @@ const handlerGetListReport = (req, res) => {
       INNER JOIN SELECT_PLACE_TYPE ON REPORT.type_id = SELECT_PLACE_TYPE.type_id
       INNER JOIN SELECT_ITEM_REPAIR ON REPORT.repair_id = SELECT_ITEM_REPAIR.repair_id
       INNER JOIN REPORT_STATE ON REPORT.state_id = REPORT_STATE.state_id
+      INNER JOIN TIME_SLOT ON TIME_SLOT.report_id = REPORT.report_id
       WHERE 1 = 1
       ${queryReportId}
       ${queryBranchId}

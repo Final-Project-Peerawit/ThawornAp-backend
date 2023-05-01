@@ -25,6 +25,8 @@ const handlerUpdateListReport = require("./src/controller/list_report/put");
 const handlerTimeSlot = require("./src/controller/time_slot/post");
 const handlerUpdateTimeSlot = require("./src/controller/time_slot/put");
 const handlerChangeState = require("./src/controller/change_state");
+const handleGetListAdminData = require("./src/controller/table_admin");
+const handleGetTimeSlot = require("./src/controller/time_slot/get");
 
 sqlQuery();
 
@@ -42,6 +44,8 @@ app.get("/api/menu", handlerAuthen, handleGetMenuByRoleId);
 app.get("/api/expensesBranch", handlerAuthen, handlerGetExpensesBranch);
 app.get("/api/user/profile", handlerAuthen, handlerGetUsesProfile);
 app.get("/api/expensesAllBranch", handlerAuthen, handlerGetExpensesAllBranch);
+app.get("/api/data_admin", handlerAuthen, handleGetListAdminData);
+app.get("/api/time_slot", handlerAuthen, handleGetTimeSlot);
 
 app.post("/api/login", handleLogin);
 app.post("/api/report", handlerAuthen, handlerReport);
