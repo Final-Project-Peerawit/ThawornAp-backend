@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS REPORT (
     place_id int NOT NULL,
     repair_id int NULL,
     state_id int NOT NULL DEFAULT 0,
-    report_dt varchar(255) NULL,
+    report_dt TIMESTAMP NULL,
     is_time_not_match boolean DEFAULT false,
     is_new_time boolean DEFAULT false,
     description_notify text NULL,
