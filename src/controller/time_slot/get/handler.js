@@ -6,7 +6,7 @@ const handlerGetTimeSlot = (req, res) => {
     connection.query(
       `SELECT * FROM TIME_SLOT WHERE report_id = ${connection.escape(
         report_id
-      )};`,
+      )} ORDER BY create_dt DESC LIMIT 1;`,
       (err, result, _fields) => {
         if (err) {
           return res.status(400).send(err);
