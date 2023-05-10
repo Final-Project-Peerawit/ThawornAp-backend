@@ -61,7 +61,7 @@ app.post(
 app.put("/api/user/profile", handlerAuthen, handleUpdateProfile);
 app.put("/api/list-report", handlerAuthen, handlerUpdateListReport);
 app.put(
-  "/api/list-report/:time_id/time-slot",
+  "/api/list-report/:time_id/update",
   handlerAuthen,
   handlerUpdateTimeSlot
 );

@@ -13,28 +13,32 @@ const handlerUpdateTimeSlot = (req, res) => {
 
   const updateTimeSlot2 = (timeSlot2) => {
     if (timeSlot2 || timeSlot2 === null) {
-      return `time_slot2 = ${connection.escape(time_slot2)}`;
+      return `,time_slot2 = ${connection.escape(time_slot2)}`;
     }
     return "";
   };
 
   const updateTimeSlot3 = (timeSlot3) => {
     if (timeSlot3 || timeSlot3 === null) {
-      return `time_slot3 = ${connection.escape(time_slot3)}`;
+      return `,time_slot3 = ${connection.escape(time_slot3)}`;
     }
     return "";
   };
 
-  const updateTimeSlot4 = time_slot4
-    ? `time_slot4 = ${connection.escape(time_slot4)}`
-    : "";
+  const updateTimeSlot4 = (timeSlot4) => {
+    if (timeSlot4 || timeSlot4 === null) {
+      return `,time_slot4 = ${connection.escape(time_slot4)}`;
+    }
+    return "";
+  };
+
   try {
     connection.query(
-      `UPDATE TIME_SLOT SET ${updateTimeSlot1(
-        time_slot1
-      )} ${updateTimeSlot2} ${updateTimeSlot3} ${updateTimeSlot4} WHERE time_id = ${connection.escape(
-        time_id
-      )};`,
+      `UPDATE TIME_SLOT SET ${updateTimeSlot1(time_slot1)} ${updateTimeSlot2(
+        time_slot2
+      )} ${updateTimeSlot3(time_slot3)} ${updateTimeSlot4(
+        time_slot4
+      )} WHERE time_id = ${connection.escape(time_id)};`,
       (err, _result, _fields) => {
         if (err) {
           return res.status(400).send(err);
