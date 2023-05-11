@@ -28,6 +28,7 @@ const handlerChangeState = require("./src/controller/change_state");
 const handleGetListAdminData = require("./src/controller/table_admin");
 const handleGetTimeSlot = require("./src/controller/time_slot/get");
 const handleUpdateRepairDateListReport = require("./src/controller/update_repair_date_list_report");
+const handleDeleteTimeSlot = require("./src/controller/time_slot/delete");
 
 sqlQuery();
 
@@ -74,6 +75,12 @@ app.put(
   "/api/list-report/:report_id/change-time",
   handlerAuthen,
   handleUpdateRepairDateListReport
+);
+
+app.delete(
+  "/api/list-report/:report_id/delete",
+  handlerAuthen,
+  handleDeleteTimeSlot
 );
 
 app.listen(port, () => {
