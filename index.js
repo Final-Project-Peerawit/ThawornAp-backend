@@ -17,7 +17,7 @@ const handlerAuthen = require("./src/controller/authen");
 const handlerGetExpensesBranch = require("./src/controller/expeses_branch");
 const handlerGetUsesProfile = require("./src/controller/user_profile/get");
 const handlerGetExpensesAllBranch = require("./src/controller/expeses_all_branch");
-const handlerReport = require("./src/controller/report");
+const handlerReport = require("./src/controller/report/post");
 const handleUpdateProfile = require("./src/controller/user_profile/put");
 const handleGetListReport = require("./src/controller/list_report/get");
 const handlerGetReportState = require("./src/controller/report_state");
@@ -29,6 +29,7 @@ const handleGetListAdminData = require("./src/controller/table_admin");
 const handleGetTimeSlot = require("./src/controller/time_slot/get");
 const handleUpdateRepairDateListReport = require("./src/controller/update_repair_date_list_report");
 const handleDeleteTimeSlot = require("./src/controller/time_slot/delete");
+const handleUpdateReport = require("./src/controller/report/put");
 
 sqlQuery();
 
@@ -75,6 +76,11 @@ app.put(
   "/api/list-report/:report_id/change-time",
   handlerAuthen,
   handleUpdateRepairDateListReport
+);
+app.put(
+  "/api/report/:report_id/edit-report",
+  handlerAuthen,
+  handleUpdateReport
 );
 
 app.delete(

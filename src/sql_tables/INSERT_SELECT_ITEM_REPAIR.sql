@@ -1,5 +1,6 @@
-INSERT INTO SELECT_ITEM_REPAIR (repair_id, place_id, repair_name, active) 
-VALUES (1, 1, 'เตียง', true), 
+INSERT INTO SELECT_ITEM_REPAIR (repair_id, place_id, repair_name, active)
+VALUES (0, 4, 'ทั้งหมด', true),
+       (1, 1, 'เตียง', true), 
        (2, 1, 'ตู้เสื้อผ้า', true), 
        (3, 1, 'โต๊ะ', true),
        (4, 1, 'เก้าอี้', true),
