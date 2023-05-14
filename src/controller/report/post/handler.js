@@ -1,4 +1,6 @@
 const connection = require("../../../connection");
+const request = require("request");
+const accessToken = "xQhobCOcCO5KYcZazN5WIqlwFJBWLjiz4HOXOZ1tSoQ";
 
 const handlerReport = (req, res) => {
   const {
@@ -15,6 +17,13 @@ const handlerReport = (req, res) => {
   const login_id = req.user.login_id;
   const state_id = 1;
   const active = 1;
+  const branch = ["ทั้งหมด", "ลาดพร้าว 71", "ลาดพร้าว 78", "ลาดกระบัง"];
+  const message = `แจ้งซ่อม \nผู้ใช้ ${req.user.firstname} ${
+    req.user.lastname
+  }\nสาขา${branch[req.user.branch_id]} ห้อง ${
+    req.user.room_number
+  } \nรหัสการแจ้ง ${report_id} \nวันที่ ${new Date().toLocaleString("th-Th")}`;
+
   try {
     connection.query(
       `INSERT INTO
@@ -49,7 +58,21 @@ const handlerReport = (req, res) => {
         if (err) {
           return res.status(400).send(err);
         }
-        return res.status(201).json({ message: "ok" });
+
+        const options = {
+          method: "POST",
+          url: "https://notify-api.line.me/api/notify",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+            Authorization: `Bearer ${accessToken}`,
+          },
+          body: `message=${message}`,
+        };
+
+        request(options, function (error, response, body) {
+          if (error) throw new Error(error);
+          return res.status(201).json({ message: "ok" });
+        });
       }
     );
   } catch (err) {

@@ -1,7 +1,8 @@
 const connection = require("../../../connection");
 
 const handlerUpdateTimeSlot = (req, res) => {
-  const { time_slot1, time_slot2, time_slot3, time_slot4 } = req.body;
+  const { time_slot1, time_slot2, time_slot3, time_slot4, report_id } =
+    req.body;
   const { time_id } = req.params;
 
   const updateTimeSlot1 = (timeSlot1) => {
@@ -31,6 +32,7 @@ const handlerUpdateTimeSlot = (req, res) => {
     }
     return "";
   };
+  const message = `รหัสการแจ้ง ${report_id}\nได้แจ้งเวลาเข้ามาใหม่`;
 
   try {
     connection.query(

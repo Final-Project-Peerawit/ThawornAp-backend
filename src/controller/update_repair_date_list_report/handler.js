@@ -1,4 +1,6 @@
 const connection = require("../../connection");
+const request = require("request");
+const accessToken = "xQhobCOcCO5KYcZazN5WIqlwFJBWLjiz4HOXOZ1tSoQ";
 
 const handlerUpdateRepairDateListReport = (req, res) => {
   const { report_dt, is_time_not_match, is_new_time } = req.body;
@@ -7,6 +9,7 @@ const handlerUpdateRepairDateListReport = (req, res) => {
   const queryStateId = state_id
     ? `, state_id = ${connection.escape(state_id)}`
     : "";
+  const message = `\nรหัสการแจ้ง ${report_id}\nได้แจ้งเวลาเข้ามาใหม่`;
 
   try {
     connection.query(
@@ -21,7 +24,20 @@ const handlerUpdateRepairDateListReport = (req, res) => {
         if (err) {
           return res.status(400).send(err);
         }
-        return res.status(201).json({ message: "ok" });
+        const options = {
+          method: "POST",
+          url: "https://notify-api.line.me/api/notify",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+            Authorization: `Bearer ${accessToken}`,
+          },
+          body: `message=${message}`,
+        };
+
+        request(options, function (error, response, body) {
+          if (error) throw new Error(error);
+          return res.status(201).json({ message: "ok" });
+        });
       }
     );
   } catch (err) {

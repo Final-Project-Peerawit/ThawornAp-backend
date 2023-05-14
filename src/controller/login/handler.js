@@ -26,6 +26,8 @@ const handlerLogin = (req, res) => {
                 login_id: result[0].login_id,
                 branch_id: result[0].branch_id,
                 room_number: result[0].room_number,
+                firstname: result[0].firstname,
+                lastname: result[0].lastname,
               },
               secret,
               {
